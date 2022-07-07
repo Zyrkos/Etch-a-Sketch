@@ -1,8 +1,11 @@
-const gridSize = 16;
-const container = document.querySelector('.container');
+let gridSize = 16;
 const resetButton = document.querySelector('button');
+const container = document.querySelector('.container');
 
 const createGrid = (amtOfGrids) => {
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('wrapper');
+    
     for(let i = 0; i < amtOfGrids; i++) {
         const row = document.createElement('div');
         row.classList.add('grid-row');
@@ -16,19 +19,21 @@ const createGrid = (amtOfGrids) => {
             })
             row.appendChild(gridBox)
         }
-        container.appendChild(row);
+        wrapper.appendChild(row);
     }
+    container.appendChild(wrapper);
 }
+
+createGrid(gridSize);
 
 resetButton.addEventListener('click', () => {
     let userSize = Number(prompt ('what dimensions do you want for the new grid'));
 
     while (userSize > 100) {
         userSize = Number(prompt ('Pick a smaller number and make sure it\s equal or less than 100'));
-        createGrid(userSize);
     }
-    
-    
+    const wrapper = document.querySelector('.wrapper');
+    wrapper.remove();
+    createGrid(userSize);
 })
 
-createGrid(gridSize);
