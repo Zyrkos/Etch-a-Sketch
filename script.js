@@ -13,8 +13,9 @@ const createGrid = (amtOfGrids) => {
             gridBox.addEventListener('mouseenter', () => {
                 gridBox.style.backgroundColor = 'black';
             })
-
             row.appendChild(gridBox)
+
+
         }
         container.appendChild(row);
     }
